@@ -2,23 +2,24 @@ package fr.pingtimeout.adventofcode2021;
 
 import java.io.IOException;
 import java.net.URISyntaxException;
+import java.util.List;
 
 public class Day01 {
-    public int countIncreases(int[] nums) {
+    public int countIncreases(List<Integer> nums) {
         int increases = 0;
-        for (int i = 1; i < nums.length; i++) {
-            if (nums[i] > nums[i - 1]) {
+        for (int i = 1; i < nums.size(); i++) {
+            if (nums.get(i) > nums.get(i-1)) {
                 increases++;
             }
         }
         return increases;
     }
 
-    public int countThreeMeasurementsIncreases(int[] nums) {
+    public int countThreeMeasurementsIncreases(List<Integer> nums) {
         int increases = 0;
-        for (int i = 3; i < nums.length; i++) {
-            int prevSum = nums[i - 3] + nums[i - 2] + nums[i - 1];
-            int nextSum = nums[i - 2] + nums[i - 1] + nums[i];
+        for (int i = 3; i < nums.size(); i++) {
+            int prevSum = nums.get(i-3) + nums.get(i-2) + nums.get(i-1);
+            int nextSum = nums.get(i-2) + nums.get(i-1) + nums.get(i);
             if (nextSum > prevSum) {
                 increases++;
             }
@@ -28,7 +29,7 @@ public class Day01 {
 
     public static void main(String[] args) throws URISyntaxException, IOException {
         Day01 day01 = new Day01();
-        int[] nums = new Parser().readFileAsInts("/day01/input.txt");
+        List<Integer> nums = new Parser().readFileAsInts("/day01/input.txt");
         System.out.println(day01.countIncreases(nums));
         System.out.println(day01.countThreeMeasurementsIncreases(nums));
     }
