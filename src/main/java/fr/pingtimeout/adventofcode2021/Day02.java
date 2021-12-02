@@ -1,15 +1,24 @@
 package fr.pingtimeout.adventofcode2021;
 
-import java.io.IOException;
-import java.net.URISyntaxException;
+import io.vavr.collection.Stream;
+
 import java.util.List;
 
-public class Day02 {
-    public enum Direction {
-        forward, up, down;
+public class Day02 implements AdventDay {
+    @Override
+    public int partOne(List<String> input) {
+        SimpleLocation finalLocation = Stream.ofAll(input)
+                .map(this::parseCommand)
+                .foldLeft(SimpleLocation.ZERO, SimpleLocation::applyCommand);
+        return finalLocation.position * finalLocation.depth;
     }
 
-    public record Command(Direction direction, int units) {
+    @Override
+    public int partTwo(List<String> input) {
+        AimedLocation finalLocation = Stream.ofAll(input)
+                .map(this::parseCommand)
+                .foldLeft(AimedLocation.ZERO, AimedLocation::applyCommand);
+        return finalLocation.position * finalLocation.depth;
     }
 
     public Command parseCommand(String direction) {
@@ -17,37 +26,34 @@ public class Day02 {
         return new Command(Direction.valueOf(tokens[0]), Integer.parseInt(tokens[1]));
     }
 
-    public int calculateMultipleAfter(List<Command> commands) {
-        int position = 0, depth = 0;
-        for (Command command : commands) {
-            switch (command.direction) {
-                case forward -> position += command.units;
-                case down -> depth += command.units;
-                case up -> depth -= command.units;
-            }
-        }
-        return position * depth;
+    public record Command(Direction direction, int units) {
     }
 
-    public int calculateAimedMultipleAfter(List<Command> commands) {
-        int position = 0, depth = 0, aim = 0;
-        for (Command command : commands) {
-            switch (command.direction) {
-                case forward -> {
-                    position += command.units;
-                    depth += command.units * aim;
-                }
-                case down -> aim += command.units;
-                case up -> aim -= command.units;
-            }
-        }
-        return position * depth;
+    public enum Direction {
+        forward, up, down;
     }
 
-    public static void main(String[] args) throws URISyntaxException, IOException {
-        Day02 day02 = new Day02();
-        List<Command> commands = new Parser().readFileAs("/day02/input.txt", day02::parseCommand);
-        System.out.println(day02.calculateMultipleAfter(commands));
-        System.out.println(day02.calculateAimedMultipleAfter(commands));
+    public record SimpleLocation(int position, int depth) {
+        public static SimpleLocation ZERO = new SimpleLocation(0, 0);
+
+        public static SimpleLocation applyCommand(SimpleLocation l, Command c) {
+            return switch (c.direction) {
+                case forward -> new SimpleLocation(l.position + c.units, l.depth);
+                case up -> new SimpleLocation(l.position, l.depth - c.units);
+                case down -> new SimpleLocation(l.position, l.depth + c.units);
+            };
+        }
+    }
+
+    public record AimedLocation(int position, int depth, int aim) {
+        public static AimedLocation ZERO = new AimedLocation(0, 0, 0);
+
+        public static AimedLocation applyCommand(AimedLocation l, Command c) {
+            return switch (c.direction) {
+                case forward -> new AimedLocation(l.position + c.units, l.depth + c.units * l.aim, l.aim);
+                case up -> new AimedLocation(l.position, l.depth, l.aim - c.units);
+                case down -> new AimedLocation(l.position, l.depth, l.aim + c.units);
+            };
+        }
     }
 }
