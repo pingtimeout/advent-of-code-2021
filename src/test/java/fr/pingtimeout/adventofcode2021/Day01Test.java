@@ -11,15 +11,15 @@ import static org.assertj.core.api.Assertions.assertThat;
 public class Day01Test {
     @Test
     public void should_find_increases() throws URISyntaxException, IOException {
-        List<Integer> ints = new Parser().readFileAsInts("/day01/input.txt");
-        int increases = new Day01().countIncreases(ints);
+        List<String> ints = new Parser().readFileAsStrings("/day01/input.txt");
+        int increases = new Day01().partOne(ints);
         assertThat(increases).isEqualTo(7);
     }
 
     @Test
     public void should_find_three_measurements_increases() throws URISyntaxException, IOException {
-        List<Integer> ints = new Parser().readFileAsInts("/day01/input.txt");
-        int increases = new Day01().countThreeMeasurementsIncreases(ints);
+        List<String> ints = new Parser().readFileAsStrings("/day01/input.txt");
+        int increases = new Day01().partTwo(ints);
         assertThat(increases).isEqualTo(5);
     }
 }
