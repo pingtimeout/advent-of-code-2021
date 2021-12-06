@@ -13,7 +13,7 @@ public class Day01 implements AdventDay {
         .intValue();
   }
 
-  public int partTwo(List<String> nums) {
+  public long partTwo(List<String> nums) {
     return Stream.ofAll(nums)
         .map(Integer::parseInt)
         .sliding(3)

@@ -34,7 +34,7 @@ public class Day02Test extends DayTest {
   @Test
   public void should_calculate_final_position_with_aim() throws URISyntaxException, IOException {
     Day02 day02 = new Day02();
-    int multiple = day02.partTwo(readInput(day02));
+    long multiple = day02.partTwo(readInput(day02));
     assertThat(multiple).isEqualTo(900);
   }
 }

@@ -37,10 +37,10 @@ public class Day03 implements AdventDay {
   }
 
   @Override
-  public int partTwo(List<String> input) {
+  public long partTwo(List<String> input) {
     int oxygenGeneratorRating = Integer.parseInt(calculateOxygenGeneratorRating(input), 2);
     int co2ScrubberRating = Integer.parseInt(calculateCo2ScrubberRating(input), 2);
-    return oxygenGeneratorRating * co2ScrubberRating;
+    return (long) oxygenGeneratorRating * co2ScrubberRating;
   }
 
   private String calculateOxygenGeneratorRating(List<String> input) {

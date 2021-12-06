@@ -14,12 +14,12 @@ public class Day02 implements AdventDay {
   }
 
   @Override
-  public int partTwo(List<String> input) {
+  public long partTwo(List<String> input) {
     AimedLocation finalLocation =
         Stream.ofAll(input)
             .map(this::parseCommand)
             .foldLeft(AimedLocation.ZERO, AimedLocation::applyCommand);
-    return finalLocation.position * finalLocation.depth;
+    return (long) finalLocation.position * finalLocation.depth;
   }
 
   public Command parseCommand(String direction) {

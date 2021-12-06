@@ -17,7 +17,7 @@ public class Day01Test extends DayTest {
   @Test
   public void should_find_three_measurements_increases() throws URISyntaxException, IOException {
     Day01 day01 = new Day01();
-    int increases = new Day01().partTwo(readInput(day01));
+    long increases = new Day01().partTwo(readInput(day01));
     assertThat(increases).isEqualTo(5);
   }
 }

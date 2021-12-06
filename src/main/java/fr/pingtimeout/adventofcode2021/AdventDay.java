@@ -5,5 +5,5 @@ import java.util.List;
 public interface AdventDay {
   int partOne(List<String> input);
 
-  int partTwo(List<String> input);
+  long partTwo(List<String> input);
 }
