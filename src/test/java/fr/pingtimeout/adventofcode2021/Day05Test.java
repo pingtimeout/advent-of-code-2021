@@ -85,17 +85,17 @@ public class Day05Test extends DayTest {
 
   @Test
   public void should_calculate_h_and_v_intersections() throws URISyntaxException, IOException {
-    Day05 day05 = new Day05();
-    List<String> lines = readInput(day05);
-    assertThat(day05.partOne(lines)).isEqualTo(5);
+    Day05 day = new Day05();
+    List<String> lines = readInput(day);
+    assertThat(day.partOne(lines)).isEqualTo(5);
   }
 
   @Test
   public void should_calculate_all_straight_lines_intersections()
       throws URISyntaxException, IOException {
-    Day05 day05 = new Day05();
-    List<String> lines = readInput(day05);
-    assertThat(day05.partTwo(lines)).isEqualTo(12);
+    Day05 day = new Day05();
+    List<String> lines = readInput(day);
+    assertThat(day.partTwo(lines)).isEqualTo(12);
   }
 
   @Test

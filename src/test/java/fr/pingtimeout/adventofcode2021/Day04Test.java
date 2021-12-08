@@ -10,9 +10,9 @@ import org.junit.Test;
 public class Day04Test extends DayTest {
   @Test
   public void should_parse_bingo_data() throws URISyntaxException, IOException {
-    Day04 day04 = new Day04();
-    List<String> lines = readInput(day04);
-    Day04.Bingo bingo = day04.parseBingoInput(lines);
+    Day04 day = new Day04();
+    List<String> lines = readInput(day);
+    Day04.Bingo bingo = day.parseBingoInput(lines);
     assertThat(bingo.draws().values())
         .containsExactly(
             7, 4, 9, 5, 11, 17, 23, 2, 0, 14, 21, 24, 10, 16, 13, 6, 15, 25, 12, 22, 18, 20, 8, 19,
@@ -47,15 +47,15 @@ public class Day04Test extends DayTest {
 
   @Test
   public void should_calculate_final_score_of_best_board() throws URISyntaxException, IOException {
-    Day04 day04 = new Day04();
-    List<String> lines = readInput(day04);
-    assertThat(day04.partOne(lines)).isEqualTo(4512);
+    Day04 day = new Day04();
+    List<String> lines = readInput(day);
+    assertThat(day.partOne(lines)).isEqualTo(4512);
   }
 
   @Test
   public void should_calculate_final_score_of_worst_board() throws URISyntaxException, IOException {
-    Day04 day04 = new Day04();
-    List<String> lines = readInput(day04);
-    assertThat(day04.partTwo(lines)).isEqualTo(1924);
+    Day04 day = new Day04();
+    List<String> lines = readInput(day);
+    assertThat(day.partTwo(lines)).isEqualTo(1924);
   }
 }

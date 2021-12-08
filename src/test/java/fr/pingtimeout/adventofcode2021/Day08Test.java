@@ -10,15 +10,15 @@ import org.junit.Test;
 public class Day08Test extends DayTest {
   @Test
   public void should_calculate_number_of_1_4_7_and_8() throws URISyntaxException, IOException {
-    Day08 day08 = new Day08();
-    List<String> lines = readInput(day08);
-    assertThat(day08.partOne(lines)).isEqualTo(26);
+    Day08 day = new Day08();
+    List<String> lines = readInput(day);
+    assertThat(day.partOne(lines)).isEqualTo(26);
   }
 
   @Test
   public void should_decode_output() throws URISyntaxException, IOException {
-    Day08 day08 = new Day08();
-    List<String> lines = readInput(day08);
-    assertThat(day08.partTwo(lines)).isEqualTo(61229);
+    Day08 day = new Day08();
+    List<String> lines = readInput(day);
+    assertThat(day.partTwo(lines)).isEqualTo(61229);
   }
 }

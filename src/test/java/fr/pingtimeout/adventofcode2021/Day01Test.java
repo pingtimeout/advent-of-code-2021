@@ -9,15 +9,15 @@ import org.junit.Test;
 public class Day01Test extends DayTest {
   @Test
   public void should_find_increases() throws URISyntaxException, IOException {
-    Day01 day01 = new Day01();
-    int increases = day01.partOne(readInput(day01));
+    Day01 day = new Day01();
+    int increases = day.partOne(readInput(day));
     assertThat(increases).isEqualTo(7);
   }
 
   @Test
   public void should_find_three_measurements_increases() throws URISyntaxException, IOException {
-    Day01 day01 = new Day01();
-    long increases = new Day01().partTwo(readInput(day01));
+    Day01 day = new Day01();
+    long increases = day.partTwo(readInput(day));
     assertThat(increases).isEqualTo(5);
   }
 }

@@ -12,19 +12,19 @@ import org.junit.Test;
 public class Day06Test extends DayTest {
   @Test
   public void should_count_lanternfish_after_80_days() throws URISyntaxException, IOException {
-    Day06 day06 = new Day06();
-    List<String> lines = readInput(day06);
-    assertThat(day06.partOne(lines)).isEqualTo(5934);
+    Day06 day = new Day06();
+    List<String> lines = readInput(day);
+    assertThat(day.partOne(lines)).isEqualTo(5934);
   }
 
   @Test
   public void should_calculate_next_age_frequencies() {
-    Day06 day06 = new Day06();
+    Day06 day = new Day06();
     Map<Integer, Long> ageFrequencies =
         Map.of(
             1, 1L, //
             3, 2L);
-    assertThat(day06.calculateNextFrequencies(ageFrequencies))
+    assertThat(day.calculateNextFrequencies(ageFrequencies))
         .containsExactlyInAnyOrderEntriesOf(
             Map.of(
                 0, 1L,
@@ -33,8 +33,8 @@ public class Day06Test extends DayTest {
 
   @Test
   public void should_parse_input_into_map() {
-    Day06 day06 = new Day06();
-    Map<Integer, Long> parsedInput = day06.parseInput("3,4,3,1,2");
+    Day06 day = new Day06();
+    Map<Integer, Long> parsedInput = day.parseInput("3,4,3,1,2");
     assertThat(parsedInput)
         .containsExactlyInAnyOrderEntriesOf(
             Map.of(
@@ -47,9 +47,9 @@ public class Day06Test extends DayTest {
 
   @Test
   public void should_calculate_new_spawns() {
-    Day06 day06 = new Day06();
-    Map<Integer, Long> ageFrequencies = day06.parseInput("0,0,0,1,3,3");
-    assertThat(day06.calculateNextFrequencies(ageFrequencies))
+    Day06 day = new Day06();
+    Map<Integer, Long> ageFrequencies = day.parseInput("0,0,0,1,3,3");
+    assertThat(day.calculateNextFrequencies(ageFrequencies))
         .containsExactlyInAnyOrderEntriesOf(
             Map.of(
                 0, 1L,
@@ -82,10 +82,10 @@ public class Day06Test extends DayTest {
   }
 
   private void assertExampleCaseAfter(int days, String expected) {
-    Day06 day06 = new Day06();
-    Map<Integer, Long> frequencies = day06.parseInput("3,4,3,1,2");
+    Day06 day = new Day06();
+    Map<Integer, Long> frequencies = day.parseInput("3,4,3,1,2");
     for (int i = 0; i < days; i++) {
-      frequencies = day06.calculateNextFrequencies(frequencies);
+      frequencies = day.calculateNextFrequencies(frequencies);
     }
     assertThat(frequenciesToArray(frequencies)).isEqualTo(parse(expected));
   }
