@@ -47,6 +47,7 @@ public class Day14Test extends DayTest {
   public void should_compute_states() throws URISyntaxException, IOException {
     Day14 day = new Day14();
     List<String> lines = readInput(day);
+
     Map<String, Long> initialState = day.parseState(lines.get(0));
     Map<String, Character> rules = day.parseInsertionRules(lines.subList(2, lines.size()));
 

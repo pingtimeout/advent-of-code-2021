@@ -6,12 +6,13 @@ import java.util.stream.Collectors;
 public class Day14 implements AdventDay {
   @Override
   public int partOne(List<String> input) {
-    Map<String, Long> state = parseState(input.get(0));
+    String stateLine = input.get(0);
+    Map<String, Long> state = parseState(stateLine);
     Map<String, Character> insertionRules = parseInsertionRules(input.subList(2, input.size()));
     for (int i = 0; i < 10; i++) {
       state = nextState(state, insertionRules);
     }
-    return (int) countPolymerDiff(state);
+    return (int) countPolymerDiff(state, stateLine.charAt(stateLine.length()-1));
   }
 
   Map<String, Long> parseState(String line) {
@@ -50,30 +51,30 @@ public class Day14 implements AdventDay {
     }
   }
 
-   long countPolymerDiff(Map<String, Long> state) {
-     System.out.println(state);
+   long countPolymerDiff(Map<String, Long> state, char lastCharOfStateLine) {
     Map<Character, Long> counts = new HashMap<>();
+    counts.put(lastCharOfStateLine, 1L);
     for (Map.Entry<String, Long> entry : state.entrySet()) {
       String pair = entry.getKey();
       Long count = entry.getValue();
       counts.put(pair.charAt(0), counts.getOrDefault(pair.charAt(0), 0L) + count);
     }
-     System.out.println(counts);
     long mostCommon = Long.MIN_VALUE, leastCommon = Long.MAX_VALUE;
     for (long value : counts.values()) {
       mostCommon = Math.max(mostCommon, value);
       leastCommon = Math.min(leastCommon, value);
     }
-    return mostCommon - leastCommon;
+     return mostCommon - leastCommon;
   }
 
   @Override
   public long partTwo(List<String> input) {
-    Map<String, Long> state = parseState(input.get(0));
+    String stateLine = input.get(0);
+    Map<String, Long> state = parseState(stateLine);
     Map<String, Character> insertionRules = parseInsertionRules(input.subList(2, input.size()));
     for (int i = 0; i < 40; i++) {
       state = nextState(state, insertionRules);
     }
-    return countPolymerDiff(state);
+    return countPolymerDiff(state, stateLine.charAt(stateLine.length() - 1));
   }
 }
