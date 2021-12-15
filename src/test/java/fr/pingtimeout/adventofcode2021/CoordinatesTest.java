@@ -1,10 +1,9 @@
 package fr.pingtimeout.adventofcode2021;
 
-import org.junit.Test;
+import static org.assertj.core.api.Assertions.assertThat;
 
 import java.util.List;
-
-import static org.assertj.core.api.Assertions.assertThat;
+import org.junit.Test;
 
 public class CoordinatesTest {
   @Test

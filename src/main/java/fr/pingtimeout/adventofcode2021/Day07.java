@@ -1,6 +1,7 @@
 package fr.pingtimeout.adventofcode2021;
 
-import java.util.*;
+import java.util.Arrays;
+import java.util.List;
 import java.util.stream.IntStream;
 
 public class Day07 implements AdventDay {

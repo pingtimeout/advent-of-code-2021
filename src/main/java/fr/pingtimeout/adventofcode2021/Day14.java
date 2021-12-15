@@ -1,6 +1,8 @@
 package fr.pingtimeout.adventofcode2021;
 
-import java.util.*;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 import java.util.stream.Collectors;
 
 public class Day14 implements AdventDay {
@@ -12,7 +14,7 @@ public class Day14 implements AdventDay {
     for (int i = 0; i < 10; i++) {
       state = nextState(state, insertionRules);
     }
-    return (int) countPolymerDiff(state, stateLine.charAt(stateLine.length()-1));
+    return (int) countPolymerDiff(state, stateLine.charAt(stateLine.length() - 1));
   }
 
   Map<String, Long> parseState(String line) {
@@ -51,7 +53,7 @@ public class Day14 implements AdventDay {
     }
   }
 
-   long countPolymerDiff(Map<String, Long> state, char lastCharOfStateLine) {
+  long countPolymerDiff(Map<String, Long> state, char lastCharOfStateLine) {
     Map<Character, Long> counts = new HashMap<>();
     counts.put(lastCharOfStateLine, 1L);
     for (Map.Entry<String, Long> entry : state.entrySet()) {
@@ -64,7 +66,7 @@ public class Day14 implements AdventDay {
       mostCommon = Math.max(mostCommon, value);
       leastCommon = Math.min(leastCommon, value);
     }
-     return mostCommon - leastCommon;
+    return mostCommon - leastCommon;
   }
 
   @Override

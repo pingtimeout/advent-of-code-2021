@@ -2,7 +2,10 @@ package fr.pingtimeout.adventofcode2021;
 
 import static java.util.stream.Collectors.groupingBy;
 
-import java.util.*;
+import java.util.Collection;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Set;
 import java.util.function.Function;
 import java.util.function.Predicate;
 import java.util.regex.Matcher;
